@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Cesar O. Torres Rodriguez= Tarea 2.1-->
+<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head></head>
+  <title>Tarea 2.1</title>
+</head>
+<body>
+  <article>
+    <h2>Formulario de Pedidos</h2>
+    
+    <form id="pedidos" method="post">
+      <label for="Equipo"> Escoge el equipo:</label>
+      <br>
+        <!--   NOTA:  el atributo value tiene el valor del equipo. Además, observa que cada input tiene el mismo valor "Equipo" en el atributo name -->
+      <input type="checkbox" name="Equipo" value="2000"> Computadora Mac 
+      <br>
+      
+      <input type="checkbox" name="Equipo" value="1500"> Computadora Dell
+      <br>
+      <input type="checkbox"  name="Equipo" value="1800"> Computadora Lenovo
+      <br>
+       <input type="button" id="btn" value="Confirmar">
+</form>
+  <p id="total"></p>
+    
+    <script>  
+                                        
+              function calcTotal() 
+              { 
+                var itemsTotal = 0;
+                var items =document.getElementsByTagName("input");
+                var numUSD = new Intl.NumberFormat("en-US",{ //variable con el formato de moneda usd
+                style:"currency",
+                currency:"USD"})
+              
+
+                //estructura de control for //
+                for (var i = 0; i < items.length; i++) // indique que fuera hasta el máximo de los items 
+                {
+                  if (items[i].checked) 
+                  { 
+                    itemsTotal += (items[i].value * 1); 
+                  } 
+                  document.getElementById("total").innerHTML ="El total de tu orden es " + numUSD.format(itemsTotal);
+                } 
+              } 
+
+              //designar el event-handler del boton                         
+                var submitButton = document.getElementById("btn");  // le cambie el nombre al atributo id del boton  
+             
+              //Elimine todo el código adicional y añadi lo siguiente:
+              function init()
+                {
+                  document.getElementById("pedidos").Equipo[0].checked =true;
+                  document.getElementById("btn").onclick =calcTotal;
+
+                }
+                document.addEventListener("DOMContentLoaded",init,false);
+    </script>
+    
+  </article>
+  
+  
+</body>
+</html>
